@@ -20,6 +20,10 @@ public class ContactBook {
         return searchIndex(name) >= 0;
     }
 
+    public boolean hasNumber(int number) {
+        return searchContact(number) >= 0;
+    }
+
     public int getNumberOfContacts() {
         return counter;
     }
@@ -43,6 +47,10 @@ public class ContactBook {
     //Pre: name != null && hasContact(name)
     public int getPhone(String name) {
         return contacts[searchIndex(name)].getPhone();
+    }
+
+    public String getContact(int number) {
+        return contacts[searchContact(number)].getName();
     }
 
     //Pre: name != null && hasContact(name)
@@ -70,6 +78,19 @@ public class ContactBook {
             else
                 i++;
         if (found) result = i;
+        return result;
+    }
+
+    private int searchContact (int phone) {
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found)
+            if(contacts[i].getPhone()==phone)
+                found = true;
+            else
+                i++;
+        if  (found) result = i;
         return result;
     }
 
