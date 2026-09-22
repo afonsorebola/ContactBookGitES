@@ -25,7 +25,7 @@ public class Main {
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
     public static final String NO_NUMBER ="Phone number does not exist.";
-    public static final String NO_REPETITIONS ="All contacts have different phone numbers";
+    public static final String NO_REPETITIONS ="All contacts have different phone numbers.";
     public static final String REPETITIONS ="There are contacts that share phone numbers.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
@@ -168,9 +168,11 @@ public class Main {
         }
         else System.out.println(BOOK_EMPTY);
     }
-    //TODO: this function plus implementation on contactBook
     private static void checkRepeats(ContactBook cBook) {
-        //if checks then prints NO_REPETITIONS
-        //else print REPETITONS
+        if (cBook.repeatContacts())
+                System.out.println(REPETITIONS);
+        else
+            System.out.println(NO_REPETITIONS);
+
     }
 }
